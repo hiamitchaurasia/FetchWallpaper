@@ -10,7 +10,11 @@ This program is a console application. Creating a UI for this is a bit overkill.
 
 You can give as arguments, the id's of the subcategories you want to have as background. If this isn't specified, it will just take a random wallpaper.
 
-To run this program at startup. Just create a shortcut of this program and place this in your startup folder (start > programs > startup). Then in the properties of this shortcut, set the target to **C:\<change this to your path>\FetchWallpaper.exe 39**. So next time you run this program, you will get a random car wallpaper.
+To run this program at startup. Just create a shortcut of this program and place this in your startup folder (start > programs > startup). Then in the properties of this shortcut, set the target to something like this
+
+	C:\<change this to your path>\FetchWallpaper.exe 39
+	
+So next time you run this program, you will get a random **car** wallpaper, because 39 is the category id for cars.
 
 This program also creates a log file. When you do not get any wallpapers, check this file or contact me if you have any questions.
 	
