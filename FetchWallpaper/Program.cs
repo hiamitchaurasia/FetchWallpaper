@@ -43,7 +43,7 @@ namespace FetchWallpaper {
                     // Start the engines
                     succes = new Program().start(args);
                 } catch (Exception e) {
-                    Console.WriteLine(DateTime.Now.ToString() + " [SEVERE] " + e.Message);
+                    Logger.severe(e.Message);
                 }
 
                 // Check if we had errors and break this
@@ -67,7 +67,7 @@ namespace FetchWallpaper {
                 return false;
 
             if (wallpapersResponse.wallpapers.Length == 0) {
-                Console.WriteLine(DateTime.Now.ToString() + " [ERROR] No wallpapers found. Something wrong with the API?");
+                Logger.error("No wallpapers found. Something wrong with the API?");
                 return false;
             }
 
@@ -83,7 +83,7 @@ namespace FetchWallpaper {
 
             // Check if we have valid categories, else just set the first wallpaper in response
             if (categories.Count == 0) {
-                Console.WriteLine(DateTime.Now.ToString() + " [INFO] No categories found, using the first wallpaper.");
+                Logger.info("No categories found, using the first wallpaper.");
 
                 Wallpaper first = wallpapersResponse.wallpapers[0];
 
@@ -91,9 +91,9 @@ namespace FetchWallpaper {
                     // Set the wallpaper
                     first.Set(Wallpaper.Style.Stretched);
 
-                    Console.WriteLine(DateTime.Now.ToString() + " [INFO] Using wallpaper " + first.title);
+                    Logger.info("Using wallpaper " + first.title);
                 } catch (Exception e) {
-                    Console.WriteLine(DateTime.Now.ToString() + " [ERROR]" + e.Message);
+                    Logger.error(e.Message);
                 }
 
                 // We are done
@@ -101,7 +101,7 @@ namespace FetchWallpaper {
             }
 
             // Create a hashtable with wallpapers per category
-            Console.WriteLine(DateTime.Now.ToString() + " [INFO] Creating hash table with all possible wallpapers.");
+            Logger.info("Creating hash table with all possible wallpapers.");
             Dictionary<int, List<Wallpaper>> wallpapers = new Dictionary<int, List<Wallpaper>>();
 
             for (int i = 0; i < wallpapersResponse.wallpapers.Length; i++) {
@@ -135,9 +135,9 @@ namespace FetchWallpaper {
             try {
                 // Set the wallpaper
                 pickedWallpaper.Set(Wallpaper.Style.Stretched);
-                Console.WriteLine(DateTime.Now.ToString() + " [INFO] Using wallpaper " + pickedWallpaper.title);
+                Logger.info("Using wallpaper " + pickedWallpaper.title + " " + pickedWallpaper.url);
             } catch (Exception e) {
-                Console.WriteLine(DateTime.Now.ToString() + " [ERROR]" + e.Message);
+                Logger.error(e.Message);
             }
 
             // We are done
@@ -150,7 +150,7 @@ namespace FetchWallpaper {
         /// <param name="requestUrl">The url you want to query</param>
         /// <returns>The deserialized object</returns>
         private Response MakeRequest(string requestUrl) {
-            Console.WriteLine(DateTime.Now.ToString() + " [INFO] Requesting " + requestUrl);
+            Logger.info("Fetching json");
 
             try {
                 HttpWebRequest request = WebRequest.Create(requestUrl) as HttpWebRequest;
@@ -166,7 +166,7 @@ namespace FetchWallpaper {
                     return jsonResponse;
                 }
             } catch (Exception e) {
-                Console.WriteLine(e.Message);
+                Logger.error(e.Message);
             }
 
             // Request failed, return null;
