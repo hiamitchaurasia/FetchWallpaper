@@ -6,15 +6,23 @@ Usage
 -----
 This program is a console application. Creating a UI for this is a bit overkill. 
 	
-	FetchWallpaper.exe <categories>
+	FetchWallpaper.exe [OPTIONS] <random|member>
+	
+Options
 
-You can give as arguments, the id's of the subcategories you want to have as background. If this isn't specified, it will just take a random wallpaper.
+	-d, --delay=VALUE          The amount of time in minutes the program waits to fetch a new wallpaper
+	-u, --user=VALUE           The id of the user you want the favourites from. Only usable in MEMBER mode.
+	-f, --folder=VALUE         The id of the user folder. Only usable in MEMBER mode. This is optional.
+	-c                         The id's of the categories you want in RANDOM mode.
+	-h, --help                 Show this message and exit
+	
+This application has 2 modes. You can run in *random* mode and in *member*. Default you are always running in random mode and you can define categories to filter. In member mode, you can define a user id (from the Wallpaperup site) and an optional folder id (A categorized favourite from the given user) to select a random wallpaper.
 
 To run this program at startup. Just create a shortcut of this program and place this in your startup folder (start > programs > startup). Then in the properties of this shortcut, set the target to something like this
 
-	C:\<change this to your path>\FetchWallpaper.exe 39
+	C:\<change this to your path>\FetchWallpaper.exe -u 1 -f 5 -d 30 member
 	
-So next time you run this program, you will get a random **car** wallpaper, because 39 is the category id for cars.
+So next time you run this program, you will get a wallpaper from user id 1, favourites category id 5 every 30 minutes.
 
 This program also creates a log file. When you do not get any wallpapers, check this file or contact me if you have any questions.
 	
@@ -105,6 +113,25 @@ VIP Males: 42
 Watercrafts: 104
 Waterfalls: 81
 World: 18
+
+Examples
+--------
+
+When you don't give any arguments, it will just pick a random featured wallpaper.
+
+	FetchWallpaper.exe
+	
+This example will pick a random wallpaper from the car (id 39) or trains (id 106) category.
+	
+	FetchWallpaper.exe -c 39 106 random
+	
+This example will pick a wallpaper from the favourites of user 1.
+	
+	FetchWallpaper.exe -u 1 member
+	
+This example will pick a wallpaper from the favourites category animals (id 5) of user 1	
+
+	FetchWallpaper.exe -u 1 -f 5 -d 30 member
 
 Thanks
 ------
