@@ -42,7 +42,7 @@ Cars: 39
 Cartoons: 116
 Cats: 72
 Children: 109
-hristmas: 62
+Christmas: 62
 Cities: 69
 Classic Games: 115
 Comics: 117

@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("FetchWallpaper")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("UGENT - INTEC")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("FetchWallpaper")]
-[assembly: AssemblyCopyright("Copyright © UGENT - INTEC 2013")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -80,6 +80,9 @@ namespace FetchWallpaper {
 
             // Set wallpaper
             SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, tempPath, SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
+
+            // Logging
+            Logger.info("New wallpaper set: " + title + " @ " + url);
         }
 
     }
